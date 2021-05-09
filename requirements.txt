@@ -1,0 +1,5 @@
+wordcloud
+nltk
+pillow
+numpy
+webvtt-py
