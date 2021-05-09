@@ -11,16 +11,21 @@ To create a visualization :
     -   Grey value: Discarded from the visualization
 3.  From this mask and the words obtained from the subtitles, the script uses [nltk](https://www.nltk.org/) to remove stop words, [wordcloud](https://pypi.org/project/wordcloud/) to create a visualization and a bit of [numpy](https://numpy.org/) image math's.
 
-# Cowboy Bebop
+# List
+
+1.  [Cowboy Bebop](#cowboy-bebop)
+2.  [Neon Genesis Evangelion](#neon-genesis-evangelion)
+
+## Cowboy Bebop
 
 ![](wordclouds/cb.png)
 
 Data used:
 
 -   English subtitles from : [Cowboy Bebop](https://en.wikipedia.org/wiki/Cowboy_Bebop) (1998)
--   [Original image](https://wallup.net/cowboy-bebop-spike-spiegel-monochrome-anime-minimalism/)
+-   [Original image](https://pinterest.com/pin/853572935621662671/)
 
-# Neon Genesis Evangelion
+## Neon Genesis Evangelion
 
 ![](wordclouds/nge.png)
 
