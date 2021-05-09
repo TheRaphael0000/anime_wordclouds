@@ -5,7 +5,7 @@ Feel free to create pull requests, but do not commit subtitles !
 To create a visualization :
 
 1.  Extracts the subtitles using [FFMPEG](https://www.ffmpeg.org/) to the VTT format, due to obvious copyright problems, they can't be on the repository.
-2.  Preprocess the images using [a graphical tool](https://www.gimp.org/) to create a mask.
+2.  Preprocess the image using [a graphical tool](https://www.gimp.org/) to create a mask.
 3.  From this mask and the words obtained from the subtitles, the script uses [nltk](https://www.nltk.org/) to remove stop words, [wordcloud](https://pypi.org/project/wordcloud/) to create a visualization and a bit of [numpy](https://numpy.org/) image math's.
 
 # Neon Genesis Evangelion

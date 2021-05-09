@@ -11,14 +11,14 @@ import nltk
 
 def wordcloud_visualization(module):
     words, colormap, mask = module.get_data()
+    # Keep only alpha-numerical characters
     words = [w.lower() for w in words if w.isalnum()]
 
+    # Load the image and convert them to the right format
     colormap = np.asarray(Image.open(colormap).convert("RGB"))
     mask = np.asarray(Image.open(mask).convert("L"))
 
-    mask = np.array(mask)
-    colormap = np.array(colormap)
-
+    # Create usefull masks from the mask image
     border_mask = mask == 255
     inner_mask = mask == 0
 
@@ -31,6 +31,7 @@ def wordcloud_visualization(module):
     top = dict(counter.most_common(200))
     print(top)
 
+    # Mask for the word cloud
     wc_mask_in = np.array(mask)
     wc_mask_in[~border_mask & ~inner_mask] = 255
     options = {
@@ -38,30 +39,43 @@ def wordcloud_visualization(module):
         "mask": wc_mask_in,
         "mode": "RGB",
         "background_color": "white",
-        "color_func": lambda *args, **kwargs: "black"
+        "color_func": lambda *arg, **kwarg: "black",
     }
+    # Create the word cloud
     wc = wordcloud.WordCloud(**options)
     wc.fit_words(top)
-
+    # Convert the array to a grey scale image
     wc_array = np.asarray(Image.fromarray(wc.to_array()).convert("L"))
-    wc_mask = wc_array > 127
 
-    carve = wc_mask & ~border_mask
+    img = np.array(colormap)
+
+    # Find the color background based on the mean color
     average_color = np.mean(colormap[inner_mask])
-    whiteish = [22, 22, 22]
-    blackish = [233, 233, 233]
-    carving_color = whiteish if average_color > 127.5 else blackish
-    colormap[carve] = carving_color
+    whiteish = np.array([22, 22, 22])
+    blackish = np.array([233, 233, 233])
+    carving_color = whiteish if average_color > 255/2 else blackish
 
-    Image.fromarray(colormap).save(f"{module.__name__}_wordcloud.png")
+    # Create a mask from the word cloud
+    wc_array =
+    wc_normalized = np.expand_dims((255 - wc_array) / 255, -1)
+
+    # Linear interpolation between the text and the backgroud color
+    img = (1 - wc_normalized) * carving_color + wc_normalized * colormap
+    # Convert the image back to int
+    img = img.astype(np.uint8)
+
+    # Add the border
+    img[border_mask] = colormap[border_mask]
+
+    Image.fromarray(img).save(f"{module.__name__}_wordcloud.png")
+
 
 
 if __name__ == '__main__':
     nltk.download("stopwords")
     nltk.download("punkt")
 
-    import nge
-    wordcloud_visualization(nge)
+    import nge, cb
 
-    import cb
+    wordcloud_visualization(nge)
     wordcloud_visualization(cb)
