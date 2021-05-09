@@ -6,6 +6,8 @@
 
 English subtitles from the 1995 anime: [Neon Genesis Evangelion](https://en.wikipedia.org/wiki/Neon_Genesis_Evangelion)
 
+I extracted the subtitles using FFMPEG to the VTT format, due to obvious copyright problems, I can't give them.
+
 [Original image](https://7themes.su/photo/hd_wallpapers/anime/neon_genesis_evangelion_minimal/57-0-11947)
 
 I had to preprocess and postprocess the images using a graphical tool to be a bit faster. Shame on me !
