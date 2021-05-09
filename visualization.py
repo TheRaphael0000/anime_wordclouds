@@ -1,16 +1,16 @@
-import re
 import collections
 import os
+import re
 import sys
 
-from PIL import Image
-import numpy as np
-import wordcloud
 import nltk
+import numpy as np
+from PIL import Image
+import wordcloud
 
 
 def wordcloud_visualization(module):
-    words, colormap, mask = module.get_data()
+    words, colormap, mask = module.get_words(), module.colormap, module.mask
     # Keep only alpha-numerical characters
     words = [w.lower() for w in words if w.isalnum()]
 
@@ -28,12 +28,12 @@ def wordcloud_visualization(module):
 
     # Count the top words
     counter = collections.Counter(words)
-    top = dict(counter.most_common(200))
+    top = dict(counter.most_common(250))
     print(top)
 
     # Mask for the word cloud
     wc_mask_in = np.array(mask)
-    wc_mask_in[~border_mask & ~inner_mask] = 255
+    wc_mask_in[~inner_mask] = 255
     options = {
         "random_state": 0,
         "mask": wc_mask_in,
@@ -53,10 +53,9 @@ def wordcloud_visualization(module):
     average_color = np.mean(colormap[inner_mask])
     whiteish = np.array([22, 22, 22])
     blackish = np.array([233, 233, 233])
-    carving_color = whiteish if average_color > 255/2 else blackish
+    carving_color = whiteish if average_color > 255 / 2 else blackish
 
-    # Create a mask from the word cloud
-    wc_array =
+    # Create a normalized mask from the word cloud
     wc_normalized = np.expand_dims((255 - wc_array) / 255, -1)
 
     # Linear interpolation between the text and the backgroud color
@@ -67,15 +66,15 @@ def wordcloud_visualization(module):
     # Add the border
     img[border_mask] = colormap[border_mask]
 
-    Image.fromarray(img).save(f"{module.__name__}_wordcloud.png")
-
+    Image.fromarray(img).save(f"wordclouds/{module.__name__}.png")
 
 
 if __name__ == '__main__':
     nltk.download("stopwords")
     nltk.download("punkt")
 
-    import nge, cb
+    import nge
+    import cb
 
     wordcloud_visualization(nge)
     wordcloud_visualization(cb)
