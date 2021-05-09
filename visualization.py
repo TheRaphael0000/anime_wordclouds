@@ -9,17 +9,18 @@ import wordcloud
 import nltk
 
 
-def wordcloud_visualization(folder, get_words):
-    os.chdir(folder)
-    sys.path.append(folder)
-
-    # Read images
-    colormap = Image.open("colormap.png")
-    border = Image.open("border.png")
-    mask = Image.open("mask.png")
-
-    words = get_words()
+def wordcloud_visualization(module):
+    words, colormap, mask = module.get_data()
     words = [w.lower() for w in words if w.isalnum()]
+
+    colormap = np.asarray(Image.open(colormap).convert("RGB"))
+    mask = np.asarray(Image.open(mask).convert("L"))
+
+    mask = np.array(mask)
+    colormap = np.array(colormap)
+
+    border_mask = mask == 255
+    inner_mask = mask == 0
 
     # Remove stop words
     stop_words = nltk.corpus.stopwords.words("english")
@@ -27,30 +28,40 @@ def wordcloud_visualization(folder, get_words):
 
     # Count the top words
     counter = collections.Counter(words)
-    top = dict(counter.most_common(250))
+    top = dict(counter.most_common(200))
+    print(top)
 
-    # Create the word cloud
-    wc = wordcloud.WordCloud(
-        mask=np.asarray(mask), mode="RGBA", background_color=None, color_func=lambda *args, **kwargs: "black")
+    wc_mask_in = np.array(mask)
+    wc_mask_in[~border_mask & ~inner_mask] = 255
+    options = {
+        "random_state": 0,
+        "mask": wc_mask_in,
+        "mode": "RGB",
+        "background_color": "white",
+        "color_func": lambda *args, **kwargs: "black"
+    }
+    wc = wordcloud.WordCloud(**options)
     wc.fit_words(top)
-    img = Image.fromarray(wc.to_array())
 
-    # Color the wordcloud
-    _, _, _, a = img.split()
-    r, g, b, _ = colormap.split()
-    img = Image.merge("RGBA", (r, g, b, a))
+    wc_array = np.asarray(Image.fromarray(wc.to_array()).convert("L"))
+    wc_mask = wc_array > 127
 
-    # Add the border
-    img = Image.alpha_composite(border, img)
+    carve = wc_mask & ~border_mask
+    average_color = np.mean(colormap[inner_mask])
+    whiteish = [22, 22, 22]
+    blackish = [233, 233, 233]
+    carving_color = whiteish if average_color > 127.5 else blackish
+    colormap[carve] = carving_color
 
-    os.chdir("..")
-    img.save(f"{folder}_wordcloud.png")
+    Image.fromarray(colormap).save(f"{module.__name__}_wordcloud.png")
 
 
 if __name__ == '__main__':
     nltk.download("stopwords")
     nltk.download("punkt")
-    
-    from nge import get_words as nge
 
-    wordcloud_visualization("nge", nge)
+    import nge
+    wordcloud_visualization(nge)
+
+    import cb
+    wordcloud_visualization(cb)

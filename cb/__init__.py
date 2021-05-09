@@ -23,15 +23,7 @@ def get_data():
 
 
 def get_words_from_subtitles(file):
-    file_words = []
-    valid = False
-    for caption in webvtt.read(file):
-        # Ignore opening and ending
-        if "Shounen yo shinwa ni nare" in caption.text:
-            valid = True
-            continue
-        if "To Be Continued" in caption.text:
-            break
-        if valid:
-            file_words.extend(nltk.tokenize.word_tokenize(caption.text))
+    lines = [l.text for l in webvtt.read(file)]
+    file_words = [nltk.tokenize.word_tokenize(l) for l in lines]
+    file_words = list(itertools.chain(*file_words))
     return file_words

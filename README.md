@@ -1,4 +1,4 @@
-# Informations
+# Information
 
 I extracted the subtitles using FFMPEG to the VTT format, due to obvious copyright problems, I can't give them.
 I had to preprocess and postprocess the images using a graphical tool to be a bit faster. Shame on me !
