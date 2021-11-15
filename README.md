@@ -26,6 +26,8 @@ Data used:
 -   English subtitles from : [Cowboy Bebop](https://en.wikipedia.org/wiki/Cowboy_Bebop) (1998)
 -   [Original image](https://pinterest.com/pin/853572935621662671/)
 
+Reddit posts: [r/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/comments/n8l6c3/) / [r/cowboybebop](https://www.reddit.com/r/cowboybebop/comments/n8l8v4/)
+
 ## Neon Genesis Evangelion
 
 ![](wordclouds/nge.png)
@@ -35,7 +37,7 @@ Data used:
 -   English subtitles from : [Neon Genesis Evangelion](https://en.wikipedia.org/wiki/Neon_Genesis_Evangelion) (1995)
 -   [Original image](https://7themes.su/photo/hd_wallpapers/anime/neon_genesis_evangelion_minimal/57-0-11947)
 
-Reddit posts : [r/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/comments/l2ozn2/oc_neon_genesis_evangelion_word_cloud/) [r/evangelion](https://www.reddit.com/r/evangelion/comments/l2p3k3/neon_genesis_evangelion_word_cloud/)
+Reddit posts : [r/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/comments/l2ozn2/) [r/evangelion](https://www.reddit.com/r/evangelion/comments/l2p3k3/)
 
 ## Darling in the Franxx
 
