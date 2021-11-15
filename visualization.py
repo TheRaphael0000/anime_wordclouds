@@ -75,6 +75,8 @@ if __name__ == '__main__':
 
     import nge
     import cb
+    import ditf
 
     wordcloud_visualization(nge)
     wordcloud_visualization(cb)
+    wordcloud_visualization(ditf)

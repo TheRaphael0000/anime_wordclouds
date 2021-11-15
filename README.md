@@ -15,6 +15,7 @@ To create a visualization :
 
 1.  [Cowboy Bebop](#cowboy-bebop)
 2.  [Neon Genesis Evangelion](#neon-genesis-evangelion)
+3.  [Darling in the Franxx](#darling-in-the-franxx)
 
 ## Cowboy Bebop
 
@@ -35,3 +36,12 @@ Data used:
 -   [Original image](https://7themes.su/photo/hd_wallpapers/anime/neon_genesis_evangelion_minimal/57-0-11947)
 
 Reddit posts : [r/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/comments/l2ozn2/oc_neon_genesis_evangelion_word_cloud/) [r/evangelion](https://www.reddit.com/r/evangelion/comments/l2p3k3/neon_genesis_evangelion_word_cloud/)
+
+## Darling in the Franxx
+
+![](wordclouds/ditf.png)
+
+Data used:
+
+-   English subtitles from : [Darling in the Franxx](https://en.wikipedia.org/wiki/Darling_in_the_Franxx) (2018)
+-   [Original image](https://wallpaperforu.com/anime-darling-in-the-franxx-minimalist-wallpaper/)
