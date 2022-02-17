@@ -1,7 +1,6 @@
+"Create a wordcloud visualization"
+
 import collections
-import os
-import re
-import sys
 
 import nltk
 import numpy as np
@@ -10,6 +9,7 @@ import wordcloud
 
 
 def wordcloud_visualization(module):
+    "Create a visualization from a python module"
     words, colormap, mask = module.get_words(), module.colormap, module.mask
     # Keep only alpha-numerical characters
     words = [w.lower() for w in words if w.isalnum()]
@@ -42,10 +42,10 @@ def wordcloud_visualization(module):
         "color_func": lambda *arg, **kwarg: "black",
     }
     # Create the word cloud
-    wc = wordcloud.WordCloud(**options)
-    wc.fit_words(top)
+    word_cloud = wordcloud.WordCloud(**options)
+    word_cloud.fit_words(top)
     # Convert the array to a grey scale image
-    wc_array = np.asarray(Image.fromarray(wc.to_array()).convert("L"))
+    wc_array = np.asarray(Image.fromarray(word_cloud.to_array()).convert("L"))
 
     img = np.array(colormap)
 

@@ -1,3 +1,4 @@
+"Neon Genesis Evangelion"
 import glob
 import itertools
 import os
@@ -12,6 +13,7 @@ mask = p + "/mask.png"
 
 
 def get_words():
+    "Get the words from the whole serie"
     sub_files = glob.glob(p + "/subs/*")
     file_words = [get_words_from_subtitles(f) for f in sub_files]
     words = list(itertools.chain(*file_words))
@@ -19,6 +21,7 @@ def get_words():
 
 
 def get_words_from_subtitles(file):
+    "Get the words from the whole serie"
     file_words = []
     valid = False
     for caption in webvtt.read(file):
