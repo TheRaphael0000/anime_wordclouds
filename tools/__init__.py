@@ -1,3 +1,5 @@
+"Create a wordcloud visualization"
+
 import collections
 
 import nltk
@@ -30,10 +32,10 @@ def wordcloud_visualization(words, colormap, mask):
         "color_func": lambda *arg, **kwarg: "black",
     }
     # Create the word cloud
-    wc = wordcloud.WordCloud(**options)
-    wc.fit_words(words)
+    word_cloud = wordcloud.WordCloud(**options)
+    word_cloud.fit_words(words)
     # Convert the array to a grey scale image
-    wc_array = np.asarray(Image.fromarray(wc.to_array()).convert("L"))
+    wc_array = np.asarray(Image.fromarray(word_cloud.to_array()).convert("L"))
 
     img = np.array(colormap)
 

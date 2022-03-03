@@ -1,3 +1,4 @@
+"Neon Genesis Evangelion"
 import glob
 import itertools
 import os
@@ -14,6 +15,7 @@ def get_words():
 
 
 def get_words_from_subtitles(file):
+    "Get the words from the whole serie"
     file_words = []
     valid = False
     for caption in webvtt.read(file):
