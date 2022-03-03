@@ -1,7 +1,4 @@
 import collections
-import os
-import re
-import sys
 
 import nltk
 import numpy as np
@@ -9,27 +6,18 @@ from PIL import Image
 import wordcloud
 
 
-def wordcloud_visualization(module):
-    words, colormap, mask = module.get_words(), module.colormap, module.mask
-    # Keep only alpha-numerical characters
-    words = [w.lower() for w in words if w.isalnum()]
+nltk.download("stopwords")
+nltk.download("punkt")
 
+
+def wordcloud_visualization(words, colormap, mask):
     # Load the image and convert them to the right format
-    colormap = np.asarray(Image.open(colormap).convert("RGB"))
-    mask = np.asarray(Image.open(mask).convert("L"))
+    colormap = np.asarray(colormap.convert("RGB"))
+    mask = np.asarray(mask.convert("L"))
 
     # Create usefull masks from the mask image
     border_mask = mask == 255
     inner_mask = mask == 0
-
-    # Remove stop words
-    stop_words = nltk.corpus.stopwords.words("english")
-    words = [w for w in words if w not in stop_words]
-
-    # Count the top words
-    counter = collections.Counter(words)
-    top = dict(counter.most_common(250))
-    print(top)
 
     # Mask for the word cloud
     wc_mask_in = np.array(mask)
@@ -43,7 +31,7 @@ def wordcloud_visualization(module):
     }
     # Create the word cloud
     wc = wordcloud.WordCloud(**options)
-    wc.fit_words(top)
+    wc.fit_words(words)
     # Convert the array to a grey scale image
     wc_array = np.asarray(Image.fromarray(wc.to_array()).convert("L"))
 
@@ -51,8 +39,7 @@ def wordcloud_visualization(module):
 
     # Find the color background based on the mean color
     average_color = np.mean(colormap[inner_mask])
-    whiteish = np.array([22, 22, 22])
-    blackish = np.array([233, 233, 233])
+    whiteish, blackish = np.array([22, 22, 22]), np.array([233, 233, 233])
     carving_color = whiteish if average_color > 255 / 2 else blackish
 
     # Create a normalized mask from the word cloud
@@ -66,17 +53,18 @@ def wordcloud_visualization(module):
     # Add the border
     img[border_mask] = colormap[border_mask]
 
-    Image.fromarray(img).save(f"wordclouds/{module.__name__}.png")
+    return Image.fromarray(img)
 
 
-if __name__ == '__main__':
-    nltk.download("stopwords")
-    nltk.download("punkt")
+def words_processing(words):
+    # Keep only alpha-numerical characters
+    words = [w.lower() for w in words if w.isalnum()]
 
-    import nge
-    import cb
-    import ditf
+    # Remove stop words
+    stop_words = nltk.corpus.stopwords.words("english")
+    words = [w for w in words if w not in stop_words]
 
-    wordcloud_visualization(nge)
-    wordcloud_visualization(cb)
-    wordcloud_visualization(ditf)
+    # Count the top words
+    counter = collections.Counter(words)
+    words = dict(counter.most_common(250))
+    return words

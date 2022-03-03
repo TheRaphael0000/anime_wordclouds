@@ -19,7 +19,7 @@ To create a visualization :
 
 ## Cowboy Bebop
 
-![](wordclouds/cb.png)
+![](wordclouds/cowboy_bebop.png)
 
 Data used:
 
@@ -30,7 +30,7 @@ Reddit posts: [r/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/comme
 
 ## Neon Genesis Evangelion
 
-![](wordclouds/nge.png)
+![](wordclouds/neon_genesis_evangelion.png)
 
 Data used:
 
@@ -41,7 +41,7 @@ Reddit posts : [r/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/comm
 
 ## Darling in the Franxx
 
-![](wordclouds/ditf.png)
+![](wordclouds/darling_in_the_franxx.png)
 
 Data used:
 
