@@ -8,9 +8,10 @@ from pathlib import Path
 
 if __name__ == '__main__':
 
-    for submodule in os.listdir("animes"):
+    for submodule in os.listdir("animes")[::-1]:
         if submodule[0] == "_":
             continue
+        print(submodule)
         module = importlib.import_module("animes." + submodule)
         module_path = Path(module.__path__[0])
         colormap = Image.open(module_path / Path("colormap.png"))

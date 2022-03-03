@@ -47,3 +47,12 @@ Data used:
 
 -   English subtitles from : [Darling in the Franxx](https://en.wikipedia.org/wiki/Darling_in_the_Franxx) (2018)
 -   [Original image](https://wallpaperforu.com/anime-darling-in-the-franxx-minimalist-wallpaper/)
+
+## Mirai Nikki
+
+![](wordclouds/mirai_nikki.png)
+
+Data used:
+
+-   English subtitles from : [Mirai Nikki](https://en.wikipedia.org/wiki/Future_Diary) (2011)
+-   [Original image](https://www.deviantart.com/max028/art/Yuki-and-Yuno-Mirai-Nikki-Minimal-Wallpaper-2-682607077)
