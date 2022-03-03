@@ -16,6 +16,7 @@ To create a visualization :
 1.  [Cowboy Bebop](#cowboy-bebop)
 2.  [Neon Genesis Evangelion](#neon-genesis-evangelion)
 3.  [Darling in the Franxx](#darling-in-the-franxx)
+4.  [Mirai Nikki](#mirai-nikki)
 
 ## Cowboy Bebop
 
