@@ -4,6 +4,7 @@ import itertools
 import os
 
 import nltk
+from nltk.tokenize import TweetTokenizer
 import webvtt
 
 
@@ -16,7 +17,8 @@ def get_words():
 
 def get_words_from_subtitles(file):
     "Get the words from the whole serie"
+    tknzr = TweetTokenizer()
     file_words = []
     for caption in webvtt.read(file):
-        file_words.extend(nltk.tokenize.word_tokenize(caption.text))
+        file_words.extend(tknzr.tokenize(caption.text))
     return file_words
