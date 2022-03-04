@@ -3,6 +3,7 @@
 import collections
 
 import nltk
+from nltk.stem.porter import PorterStemmer
 import numpy as np
 from PIL import Image
 import wordcloud
@@ -58,6 +59,25 @@ def wordcloud_visualization(words, colormap, mask):
     return Image.fromarray(img)
 
 
+def stem_count(words):
+    # stem all the words
+    stemmer = PorterStemmer(PorterStemmer.NLTK_EXTENSIONS)
+    words_by_stem = collections.defaultdict(list)
+    for word in words:
+        stem = stemmer.stem(word)
+        words_by_stem[stem].append(word)
+
+    # count the words that have the same stem
+    # use the most common usage of the stem as the key
+    words_count = {}
+    for stem, words in words_by_stem.items():
+        counter = collections.Counter(words)
+        most_common_usage = counter.most_common(1)
+        total = sum(dict(counter).values())
+        words_count[most_common_usage[0][0]] = total
+    return words_count
+
+
 def words_processing(words):
     # Keep only alpha-numerical characters
     words = [w.lower() for w in words if w.isalnum()]
@@ -66,7 +86,9 @@ def words_processing(words):
     stop_words = nltk.corpus.stopwords.words("english")
     words = [w for w in words if w not in stop_words]
 
+    words_count = stem_count(words)
+
     # Count the top words
-    counter = collections.Counter(words)
+    counter = collections.Counter(words_count)
     words = dict(counter.most_common(250))
     return words
