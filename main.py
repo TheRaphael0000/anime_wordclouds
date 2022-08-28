@@ -14,6 +14,7 @@ def generate(submodule_name):
     mask = Image.open(module_path / Path("mask.png"))
     words = module.get_words()
     words = words_processing(words)
+    print(words["delete"])
     wc = wordcloud_visualization(words, colormap, mask)
     wc.save(f"wordclouds/{submodule_name}.png")
 

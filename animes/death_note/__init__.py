@@ -23,8 +23,6 @@ def get_words_from_subtitles(file, buffer_size=6):
     previous = []
     for caption in webvtt.read(file):
         text = caption.text
-        # weird "Delete"s in the subtitles
-        text = text.replace("Delete", "")
         if text in previous:
             continue
         previous.append(text)
