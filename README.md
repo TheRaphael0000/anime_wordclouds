@@ -17,6 +17,7 @@ To create a visualization :
 2.  [Neon Genesis Evangelion](#neon-genesis-evangelion)
 3.  [Darling in the Franxx](#darling-in-the-franxx)
 4.  [Mirai Nikki](#mirai-nikki)
+4.  [Death Note](#death-note)
 
 ## Cowboy Bebop
 
@@ -57,3 +58,13 @@ Data used:
 
 -   English subtitles from : [Mirai Nikki](https://en.wikipedia.org/wiki/Future_Diary) (2011)
 -   [Original image](https://www.deviantart.com/max028/art/Yuki-and-Yuno-Mirai-Nikki-Minimal-Wallpaper-2-682607077)
+
+
+## Death Note
+
+![](wordclouds/death_note.png)
+
+Data used:
+
+-   English subtitles from : [Death Note](https://en.wikipedia.org/wiki/Death_Note) (2006)
+-   [Original image](https://wallpapercave.com/w/wp8539142)
