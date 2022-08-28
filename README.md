@@ -9,7 +9,7 @@ To create a visualization :
     -   Black: Word cloud space
     -   White: Kept as is from the image
     -   Grey value: Discarded from the visualization
-3.  From this mask and the words obtained from the subtitles, the script uses [nltk](https://www.nltk.org/) to remove stop words, [wordcloud](https://pypi.org/project/wordcloud/) to create a visualization and a bit of [numpy](https://numpy.org/) image math's.
+3.  From this mask and the words obtained from the subtitles, the script uses [nltk](https://www.nltk.org/) to remove [stop words](https://pastebin.com/F0XyDqUR), [wordcloud](https://pypi.org/project/wordcloud/) to create a visualization and a bit of [numpy](https://numpy.org/) image math's.
 
 # List
 
