@@ -42,9 +42,19 @@ def wordcloud_visualization(words, colormap, mask):
 
     # Find the color background based on the mean color
     average_color = np.mean(colormap[inner_mask])
-    whiteish, blackish = np.array([22, 22, 22]), np.array([233, 233, 233])
-    carving_color = whiteish if average_color > 255 / 2 else blackish
+    print(average_color)
+    blackish = np.array([22, 22, 22])
+    greyish = np.array([180,180,180])
+    whiteish = np.array([233, 233, 233])
 
+    if average_color < 102:
+        carving_color = whiteish
+    elif average_color > 154:
+        carving_color = blackish
+    else:
+        carving_color = greyish
+
+    carving_color = greyish
     # Create a normalized mask from the word cloud
     wc_normalized = np.expand_dims((255 - wc_array) / 255, -1)
 

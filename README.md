@@ -17,7 +17,8 @@ To create a visualization :
 2.  [Neon Genesis Evangelion](#neon-genesis-evangelion)
 3.  [Darling in the Franxx](#darling-in-the-franxx)
 4.  [Mirai Nikki](#mirai-nikki)
-4.  [Death Note](#death-note)
+5.  [Death Note](#death-note)
+6.  [Steins;Gate](#steinsgate)
 
 ## Cowboy Bebop
 
@@ -68,3 +69,12 @@ Data used:
 
 -   English subtitles from : [Death Note](https://en.wikipedia.org/wiki/Death_Note) (2006)
 -   [Original image](https://wallpapercave.com/w/wp8539142)
+
+## Steins;Gate
+
+![](wordclouds/steins_gate.png)
+
+Data used:
+
+-   English subtitles from : [Steins;Gate](https://en.wikipedia.org/wiki/Steins;Gate) (2009)
+-   [Original image](https://w.forfun.com/fetch/1b/1b43426a9670562371613517762b3fe8.jpeg)

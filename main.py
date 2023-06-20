@@ -10,11 +10,16 @@ from pathlib import Path
 def generate(submodule_name):
     module = importlib.import_module("animes." + submodule_name)
     module_path = Path(module.__path__[0])
+    print("loading colormap")
     colormap = Image.open(module_path / Path("colormap.png"))
+    print("loading mask")
     mask = Image.open(module_path / Path("mask.png"))
+    print("loading words")
     words = module.get_words()
+    print(f"{len(words)} words loaded")
     words = words_processing(words)
-    print(words["delete"])
+    print(f"{len(words)} words kept")
+    print(words)
     wc = wordcloud_visualization(words, colormap, mask)
     wc.save(f"wordclouds/{submodule_name}.png")
 
@@ -26,4 +31,4 @@ if __name__ == '__main__':
     #         continue
     #     generate(submodule_name)
 
-    generate("death_note")
+    generate("steins_gate")
