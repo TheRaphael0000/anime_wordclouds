@@ -19,6 +19,7 @@ To create a visualization :
 4.  [Mirai Nikki](#mirai-nikki)
 5.  [Death Note](#death-note)
 6.  [Steins;Gate](#steinsgate)
+7.  [One-Punch Man](#one-punch-man)
 
 ## Cowboy Bebop
 
