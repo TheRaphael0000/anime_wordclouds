@@ -2,4 +2,4 @@ wordcloud
 nltk
 pillow
 numpy
-webvtt-py
+beautifulsoup4

@@ -4,16 +4,19 @@ import collections
 
 import nltk
 from nltk.stem.porter import PorterStemmer
+from nltk.tokenize import TweetTokenizer
 import numpy as np
 from PIL import Image
 import wordcloud
+import re
+from bs4 import BeautifulSoup
 
 
 nltk.download("stopwords")
 nltk.download("punkt")
 
 
-def wordcloud_visualization(words, colormap, mask):
+def wordcloud_visualization(words, colormap, mask, carving_color):
     # Load the image and convert them to the right format
     colormap = np.asarray(colormap.convert("RGB"))
     mask = np.asarray(mask.convert("L"))
@@ -40,21 +43,6 @@ def wordcloud_visualization(words, colormap, mask):
 
     img = np.array(colormap)
 
-    # Find the color background based on the mean color
-    average_color = np.mean(colormap[inner_mask])
-    print(average_color)
-    blackish = np.array([22, 22, 22])
-    greyish = np.array([180,180,180])
-    whiteish = np.array([233, 233, 233])
-
-    if average_color < 102:
-        carving_color = whiteish
-    elif average_color > 154:
-        carving_color = blackish
-    else:
-        carving_color = greyish
-
-    carving_color = greyish
     # Create a normalized mask from the word cloud
     wc_normalized = np.expand_dims((255 - wc_array) / 255, -1)
 
@@ -67,6 +55,39 @@ def wordcloud_visualization(words, colormap, mask):
     img[border_mask] = colormap[border_mask]
 
     return Image.fromarray(img)
+
+
+def parse_vtt(vtt_file):
+    text = open(vtt_file, "rb").read().decode("utf8")
+    text = text.replace("WEBVTT\n", "")
+    timecode = "\d+:\d+\.\d+"
+    pattern = fr"\n{timecode} --> {timecode}\n"
+    text = re.sub(pattern, "", text, flags=re.S)
+    soup = BeautifulSoup(text, "html.parser")
+    text = ' '.join(soup.stripped_strings)
+    return text
+
+
+def tokenize(text):
+    tokenizer = TweetTokenizer()
+    words = tokenizer.tokenize(text)
+    return words
+
+
+def words_processing(words, kept):
+    # Keep only alpha-numerical characters
+    words = [w.lower() for w in words if w.isalnum()]
+
+    # Remove stop words
+    stop_words = nltk.corpus.stopwords.words("english")
+    words = [w for w in words if w not in stop_words]
+
+    words_count = stem_count(words)
+
+    # Count the top words
+    counter = collections.Counter(words_count)
+    words = dict(counter.most_common(kept))
+    return words
 
 
 def stem_count(words):
@@ -86,19 +107,3 @@ def stem_count(words):
         total = sum(dict(counter).values())
         words_count[most_common_usage[0][0]] = total
     return words_count
-
-
-def words_processing(words):
-    # Keep only alpha-numerical characters
-    words = [w.lower() for w in words if w.isalnum()]
-
-    # Remove stop words
-    stop_words = nltk.corpus.stopwords.words("english")
-    words = [w for w in words if w not in stop_words]
-
-    words_count = stem_count(words)
-
-    # Count the top words
-    counter = collections.Counter(words_count)
-    words = dict(counter.most_common(250))
-    return words

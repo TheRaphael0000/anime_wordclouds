@@ -78,3 +78,12 @@ Data used:
 
 -   English subtitles from : [Steins;Gate](https://en.wikipedia.org/wiki/Steins;Gate) (2009)
 -   [Original image](https://w.forfun.com/fetch/1b/1b43426a9670562371613517762b3fe8.jpeg)
+
+## One-Punch Man
+
+![](wordclouds/onepunch_man.png)
+
+Data used:
+
+-   English subtitles from : [One-Punch Man](https://en.wikipedia.org/wiki/One-Punch_Man) season 1 (2015)
+-   [Original image](https://www.deviantart.com/darkfate17/art/Saitama-OnePunch-Man-Minimalist-665264189)
