@@ -74,12 +74,10 @@ def tokenize(text):
     return words
 
 
-def words_processing(words, kept):
+def words_processing(words, stop_words, kept):
     # Keep only alpha-numerical characters
     words = [w.lower() for w in words if w.isalnum()]
-
     # Remove stop words
-    stop_words = nltk.corpus.stopwords.words("english")
     words = [w for w in words if w not in stop_words]
 
     words_count = stem_count(words)

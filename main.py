@@ -1,13 +1,13 @@
-import animes
 from tools import parse_vtt, tokenize, words_processing, wordcloud_visualization
 
+import nltk
 from PIL import Image
 from pprint import pprint
 import glob
 import numpy as np
 
 
-def wordcloud_pipline(anime_name, words_kept, carving_color):
+def wordcloud_pipline(anime_name, stop_words, words_kept, carving_color):
     anime_path = f"animes/{anime_name}"
 
     print("loading colormap")
@@ -28,7 +28,7 @@ def wordcloud_pipline(anime_name, words_kept, carving_color):
     print(f"{len(words)} words loaded")
 
     print("processing words")
-    words = words_processing(words, words_kept)
+    words = words_processing(words, stop_words, words_kept)
     pprint(words, sort_dicts=False)
     print(f"{len(words)} words kept")
 
@@ -42,4 +42,7 @@ if __name__ == '__main__':
     greyish = np.array([180, 180, 180])
     whiteish = np.array([233, 233, 233])
 
-    wordcloud_pipline("onepunch_man", 250, blackish)
+    stop_words = nltk.corpus.stopwords.words("english")
+    print(stop_words)
+
+    wordcloud_pipline("onepunch_man", stop_words, 250, blackish)
