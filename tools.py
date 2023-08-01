@@ -12,10 +12,6 @@ import re
 from bs4 import BeautifulSoup
 
 
-nltk.download("stopwords")
-nltk.download("punkt")
-
-
 def wordcloud_visualization(words, colormap, mask, carving_color):
     # Load the image and convert them to the right format
     colormap = np.asarray(colormap.convert("RGB"))
