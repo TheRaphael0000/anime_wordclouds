@@ -21,6 +21,7 @@ To create a visualization :
 6.  [Steins;Gate](#steinsgate)
 7.  [One-Punch Man](#one-punch-man)
 8.  [Bocchi the Rock!](#bocchi-the-rock)
+9.  [Chainsaw Man](#chainsaw-man)
 
 ## Neon Genesis Evangelion
 
@@ -111,5 +112,16 @@ Data used:
 
 -   English subtitles from : [Bocchi the Rock](https://en.wikipedia.org/wiki/Bocchi_the_Rock!) season 1 (2022)
 -   [Original image](https://www.deviantart.com/akinakiirami/art/bocchi-972548795)
+
+Creation date: 20241103
+
+## Chainsaw Man
+
+![](wordclouds/chainsaw_man.png)
+
+Data used:
+
+-   English subtitles from : [Bocchi the Rock](https://en.wikipedia.org/wiki/Chainsaw_Man) season 1 (2022)
+-   [Original image](https://www.deviantart.com/dave020626/art/Chainsaw-Man-Power-and-Denji-Minimalist-art-937477153)
 
 Creation date: 20241103
