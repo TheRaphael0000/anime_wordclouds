@@ -1,5 +1,6 @@
 subs
 *_wordcloud.png
+*.png~
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

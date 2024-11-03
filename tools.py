@@ -56,7 +56,9 @@ def wordcloud_visualization(words, colormap, mask, carving_color):
 def parse_vtt(vtt_file):
     text = open(vtt_file, "rb").read().decode("utf8")
     text = text.replace("WEBVTT\n", "")
-    timecode = "\d+:\d+\.\d+"
+    text = text.replace(r"\h", "")
+    text = text.replace(r"<b>m 0 0 l 100 0 100 100 0 100</b>", "")
+    timecode = r"\d+:\d+\.\d+"
     pattern = fr"\n{timecode} --> {timecode}\n"
     text = re.sub(pattern, "", text, flags=re.S)
     soup = BeautifulSoup(text, "html.parser")
