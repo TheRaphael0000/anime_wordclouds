@@ -121,7 +121,7 @@ Creation date: 20241103
 
 Data used:
 
--   English subtitles from : [Bocchi the Rock](https://en.wikipedia.org/wiki/Chainsaw_Man) season 1 (2022)
+-   English subtitles from : [Chainsaw Man](https://en.wikipedia.org/wiki/Chainsaw_Man) season 1 (2022)
 -   [Original image](https://www.deviantart.com/dave020626/art/Chainsaw-Man-Power-and-Denji-Minimalist-art-937477153)
 
 Creation date: 20241103
